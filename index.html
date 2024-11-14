@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이미지 비교 선택</title>
+  <style>
+    /* 전체 화면 중앙 정렬 */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* 이미지 컨테이너 스타일 */
+    .image-container {
+      display: flex;
+      gap: 20px;
+      max-width: 90%;  /* 최대 너비 설정 */
+      flex-wrap: wrap; /* 작은 화면에서 자동 줄바꿈 */
+      justify-content: center;
+    }
+
+    /* 이미지 박스 스타일 */
+    .image-box {
+      position: relative;
+      cursor: pointer;
+      border: 3px solid transparent;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      flex-basis: calc(50% - 10px); /* 화면 크기에 따라 너비 조정 */
+      max-width: 400px;  /* 이미지 최대 너비 설정 */
+    }
+
+    .image-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* 선택된 이미지 스타일 */
+    .image-box.selected {
+      border-color: #007bff;
+      transform: scale(1.05); /* 선택 시 약간 확대 */
+    }
+
+    /* 작은 화면 대응 */
+    @media (max-width: 768px) {
+      .image-box {
+        flex-basis: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="image-container">
+    <div class="image-box" onclick="selectImage(this)">
+      <img src="https://via.placeholder.com/400x300.png?text=Image+1" alt="Image 1">
+    </div>
+    <div class="image-box" onclick="selectImage(this)">
+      <img src="https://via.placeholder.com/400x300.png?text=Image+2" alt="Image 2">
+    </div>
+  </div>
+
+  <script>
+    function selectImage(selectedBox) {
+      document.querySelectorAll('.image-box').forEach(box => {
+        box.classList.remove('selected');
+      });
+      selectedBox.classList.add('selected');
+    }
+  </script>
+</body>
+</html>
