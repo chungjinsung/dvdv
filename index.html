@@ -20,22 +20,18 @@
     .image-container {
       display: flex;
       gap: 20px;
-      max-width: 90%;  /* 최대 너비 설정 */
-      flex-wrap: wrap; /* 작은 화면에서 자동 줄바꿈 */
+      max-width: 90%;
+      flex-wrap: wrap;
       justify-content: center;
     }
 
-    /* 이미지 박스 스타일 */
+    /* 이미지 박스 스타일 (단순하게) */
     .image-box {
-      position: relative;
       cursor: pointer;
-      border: 3px solid transparent;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, border-color 0.3s ease;
-      flex-basis: calc(50% - 10px); /* 화면 크기에 따라 너비 조정 */
-      max-width: 400px;  /* 이미지 최대 너비 설정 */
+      border: 2px solid #ccc;
+      transition: border-color 0.3s ease;
+      flex-basis: calc(50% - 10px);
+      max-width: 400px;
     }
 
     .image-box img {
@@ -44,10 +40,9 @@
       display: block;
     }
 
-    /* 선택된 이미지 스타일 */
+    /* 선택된 이미지 스타일 (단순한 테두리 강조) */
     .image-box.selected {
       border-color: #007bff;
-      transform: scale(1.05); /* 선택 시 약간 확대 */
     }
 
     /* 작은 화면 대응 */
@@ -70,7 +65,7 @@
 
   <script>
     function selectImage(selectedBox) {
-      // 선택된 이미지 박스에 'selected' 클래스 추가하고, 다른 이미지 박스에서 제거
+      // 선택된 이미지 박스에 'selected' 클래스를 추가하고, 다른 이미지 박스에서는 제거
       document.querySelectorAll('.image-box').forEach(box => {
         box.classList.remove('selected');
       });
