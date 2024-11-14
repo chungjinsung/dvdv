@@ -70,10 +70,15 @@
 
   <script>
     function selectImage(selectedBox) {
+      // 선택된 이미지 박스에 'selected' 클래스 추가하고, 다른 이미지 박스에서 제거
       document.querySelectorAll('.image-box').forEach(box => {
         box.classList.remove('selected');
       });
       selectedBox.classList.add('selected');
+
+      // 새로운 랜덤 이미지를 로드하여 선택한 이미지 교체
+      const newImageUrl = `https://picsum.photos/400/300?random=${Math.floor(Math.random() * 1000)}`;
+      selectedBox.querySelector('img').src = newImageUrl;
     }
   </script>
 </body>
